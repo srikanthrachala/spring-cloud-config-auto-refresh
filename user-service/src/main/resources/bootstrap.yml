@@ -1,0 +1,26 @@
+server:
+  port: 8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  application:
+    name: user-service
+  profiles:
+    active: dev
+
+  cloud:
+    config:
+      name: user-service
+      uri: http://localhost:8888
+      server:
+        bootstrap: true
+
+
+
+
+
