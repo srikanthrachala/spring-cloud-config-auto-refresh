@@ -11,7 +11,7 @@ spring:
   application:
     name: config-server
   profiles:
-    active: git, native
+    active: git
   cloud:
     config:
       server:
@@ -23,18 +23,39 @@ spring:
           password:
           skip-ssl-validation: true
           timeout: 4
-          search-paths: 'runtime/resources/{application}'
-          order: 2
-
-        native:
-          search-locations:
-            - file:./runtime/resources/
-            - file:./runtime/resources/product-service/
-            - file:./runtime/resources/user-service/
-          order: 1
+          search-paths: "config-repo/{application}/"
         encrypt:
           enabled: false
 
+# Below configuration can be used to hold property files location in config server itself and can be used for
+# both git and native profiles. If git server is down, it can retrieve files from local location.
+
+#spring:
+#  application:
+#    name: config-server
+#  profiles:
+#    active: git, native
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/srikanthrachala/spring-cloud-config-auto-refresh.git
+#          clone-on-start: true
+#          force-pull: true
+#          username:
+#          password:
+#          skip-ssl-validation: true
+#          timeout: 4
+#          search-paths: "config-server/runtime/resources/{application}/"
+#            order: 1
+#        native:
+#          search-locations:
+#            - file:./runtime/resources/
+#            - file:./runtime/resources/product-service/
+#            - file:./runtime/resources/user-service/
+#            order: 2
+#        encrypt:
+#          enabled: false
 
 
 
