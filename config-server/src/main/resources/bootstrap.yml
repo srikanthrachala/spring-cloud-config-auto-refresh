@@ -27,6 +27,23 @@ spring:
         encrypt:
           enabled: false
 
+  # Spring Cloud Bus - Kafka configuration
+    bus:
+      enabled: true
+      refresh:
+        enabled: true
+      trace:
+        enabled: true
+    stream:
+      kafka:
+        bootstrap-brokers: http://localhost:9092
+      bindings:
+        springCloudBusInput:
+          destination: ENV.APPNAME.CONFIG.BUS
+        springCloudBusOutput:
+          destination: ENV.APPNAME.CONFIG.BUS
+
+
 # Below configuration can be used to hold property files location in config server itself and can be used for
 # both git and native profiles. If git server is down, it can retrieve files from local location.
 
@@ -49,13 +66,25 @@ spring:
 #          search-paths: "config-server/runtime/resources/{application}/"
 #            order: 1
 #        native:
-#          search-locations:
-#            - file:./runtime/resources/
-#            - file:./runtime/resources/product-service/
-#            - file:./runtime/resources/user-service/
+#          search-locations: file:./runtime/resources/{application}
 #            order: 2
 #        encrypt:
 #          enabled: false
+#    # Spring Cloud Bus - Kafka configuration
+#    bus:
+#      enabled: true
+#      refresh:
+#        enabled: true
+#      trace:
+#        enabled: trues
+#    stream:
+#      kafka:
+#        bootstrap-brokers: http://localhost:9092
+#      bindings:
+#        springCloudBusInput:
+#          destination: ENV.APPNAME.CONFIG.BUS
+#        springCloudBusOutput:
+#          destination: ENV.APPNAME.CONFIG.BUS
 
 
 

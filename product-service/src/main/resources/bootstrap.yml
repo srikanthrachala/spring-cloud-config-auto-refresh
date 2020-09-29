@@ -20,6 +20,22 @@ spring:
       server:
         bootstrap: true
 
+    # Spring Cloud Bus - Kafka configuration
+    bus:
+      enabled: true
+      refresh:
+        enabled: true
+      trace:
+        enabled: true
+    stream:
+      kafka:
+        bootstrap-brokers: http://localhost:9092
+      bindings:
+        springCloudBusInput:
+          destination: ENV.APPNAME.CONFIG.BUS
+        springCloudBusOutput:
+          destination: ENV.APPNAME.CONFIG.BUS
+
 
 
 
