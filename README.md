@@ -1,2 +1,2 @@
-# spring-cloud-config-auto-refresh
-Spring Cloud Configuration Auto Refresh Application
+
+![alt text](https://github.com/srikanthrachala/spring-cloud-config-auto-refresh/blob/master/ConfigurationManagement.PNG?raw=true)
